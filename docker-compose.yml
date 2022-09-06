@@ -1,0 +1,9 @@
+version: '3'
+services:
+  property-search:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: stock-analyzer/latest
+    ports:
+      - "81:5000"

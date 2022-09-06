@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <h3>Weekly Changes </h3>
+        <div id='chart_result' class="mb-5"></div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="recommendations">
+          <!-- {{ price_estimates }} -->
+          {{ price_estimates['ticker']}}<br>
+          <strong class="mt-5">Weekly Estimates</strong> <br>
+          Open Price : {{ price_estimates['open_price']}} <br>
+          Low Price : {{ price_estimates['low_estimate']}} <br>
+          High Price : {{ price_estimates['high_estimate']}} <br>
+
+          <strong class="mt-2">Current Price Estimates</strong> <br>
+          Open Price : {{ price_estimates['current_price']}} <br>
+          Current Low Price : {{ price_estimates['current_low_estimate']}} <br>
+          Current High Price : {{ price_estimates['current_high_estimate']}} <br>
+
+          <strong class="mt-2"> Confidence </strong> <br>
+          {{confidence}} %
+
+
+        </div>
+      </div>
+
+
+
+      </div>
+    </div>
+    <div>
+      <H3>Weekly Price Charts</H3>
+      <div id="price_chart"></div>
+    </div>
+
+    <div class="mt-5">
+      <H3>Daily Price Charts</H3>
+      <div id="daily_price_chart"></div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+  var chart_result = {{chart_result | safe}};
+  Plotly.plot('chart_result',chart_result,{});
+
+  var price_chart = {{price_chart | safe }}
+  Plotly.plot('price_chart',price_chart,{});
+
+  var daily_price_chart = {{daily_price_chart | safe }}
+  Plotly.plot('daily_price_chart',daily_price_chart,{});
+</script>
+</html>
