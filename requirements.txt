@@ -67,3 +67,4 @@ Werkzeug==2.2.2
 wheel==0.37.1
 widgetsnbextension==4.0.3
 yfinance==0.1.74
+gunicorn==20.1.0
