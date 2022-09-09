@@ -32,7 +32,7 @@ def analyze_stock(stock_ticker):
 
 
     datetime.datetime.now()#-timedelta(7) #remove timedetla -1 to go to productions mode
-    start = datetime.datetime.now()-timedelta(365*2)
+    start = datetime.datetime.now()-timedelta(365*10)
     end = datetime.datetime.now()#-timedelta(7) 
 
     stock=yf.download(stock_ticker, start, end)
@@ -189,8 +189,8 @@ def analyze_stock(stock_ticker):
     weekly_stock['macd_s'] = weekly_stock.index.map(macd_s)
 
 
-    k = stock['Close'].ewm(span=12, adjust=False, min_periods=12).mean()
-    d = stock['Close'].ewm(span=26, adjust=False, min_periods=26).mean()
+    k = stock['Adj Close'].ewm(span=12, adjust=False, min_periods=12).mean()
+    d = stock['Adj Close'].ewm(span=26, adjust=False, min_periods=26).mean()
     macd = k-d 
     macd_s = macd.ewm(span=9, adjust = False, min_periods = 9).mean()
 
