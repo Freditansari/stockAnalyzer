@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-
+# testing potato
 @app.route('/analyze/', methods=['GET'])
 def hello():
     if request.method == 'GET':
