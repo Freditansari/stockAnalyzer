@@ -36,7 +36,7 @@ def analyze_stock(stock_ticker):
     end = datetime.datetime.now()#-timedelta(7) 
 
     stock=yf.download(stock_ticker, start, end)
-    current_price = stock['Open'].tail(1).values
+    current_price = stock['Close'].tail(1).values
 
     logic = {'Open': 'first',
           'High': 'max',
