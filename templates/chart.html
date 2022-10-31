@@ -13,7 +13,7 @@
       <div class="col-lg-8 col-md-8 col-sm-12">
           <h1>{{ ticker.upper() }}</h1>
         <h3>Trend Forecast </h3>
-        <div id='trend_chart_output' class="mb-5"></div>
+        <div id='trend_chart_output' ></div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="recommendations">
@@ -32,9 +32,14 @@
 
     </div>
 
-    <div class="mt-5">
+        <div class="row">
+{#            <div class="col-lg-4 col-md-4 col-sm-12">#}
+                <div id="high_low_chart_output">
 
-    </div>
+                </div>
+{#            </div>#}
+        </div>
+
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -43,11 +48,9 @@
 <script type='text/javascript'>
   var trend_chart_output = {{trend_chart_output | safe}};
   Plotly.plot('trend_chart_output',trend_chart_output,{});
-  {##}
-  {#var price_chart = {{price_chart | safe }}#}
-  {#Plotly.plot('price_chart',price_chart,{});#}
-  {##}
-  {#var daily_price_chart = {{daily_price_chart | safe }}#}
-  {#Plotly.plot('daily_price_chart',daily_price_chart,{});#}
+   var high_low_chart_output = {{high_low_chart_output | safe}};
+  Plotly.plot('high_low_chart_output',high_low_chart_output,{});
+
+
 </script>
 </html>
