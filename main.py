@@ -13,23 +13,18 @@ def hello():
         # print(ticker)
         ticker = request.args.get('ticker')
 
-        chart_result,\
-             confidence,\
-                 price_chart, \
-                    estimates, \
-                    price_estimates,\
-                         daily_price_chart = analyze_stock(ticker)
 
-        return render_template('chart.html', 
-        chart_result = chart_result, 
-        confidence=confidence, 
-        price_chart= price_chart, 
-        daily_price_chart = daily_price_chart,
-        estimates=estimates, 
-        price_estimates = price_estimates)
+        trend_chart_output, estimates, high_low_chart_output= analyze_stock(ticker)
+
+        return render_template('chart.html',
+                               ticker=ticker,
+                               trend_chart_output=trend_chart_output,
+                               estimates=estimates,
+                               high_low_chart_output=high_low_chart_output
+                               )
     else:
         return "Enter ticker"
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000,debug=True)
+    app.run(host="0.0.0.0", port=5001,debug=True)

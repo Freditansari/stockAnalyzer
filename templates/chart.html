@@ -11,27 +11,16 @@
 <body>
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12">
-        <h3>Weekly Changes </h3>
-        <div id='chart_result' class="mb-5"></div>
+          <h1>{{ ticker.upper() }}</h1>
+        <h3>Trend Forecast </h3>
+        <div id='trend_chart_output' class="mb-5"></div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12">
         <div class="recommendations">
-          <!-- {{ price_estimates }} -->
-          {{ price_estimates['ticker']}}<br>
-          <strong class="mt-5">Weekly Estimates</strong> <br>
-          Open Price : {{ price_estimates['open_price']}} <br>
-          Low Price : {{ price_estimates['low_estimate']}} <br>
-          High Price : {{ price_estimates['high_estimate']}} <br>
-
-          <strong class="mt-2">Current Price Estimates</strong> <br>
-          Open Price : {{ price_estimates['current_price']}} <br>
-          Current Low Price : {{ price_estimates['current_low_estimate']}} <br>
-          Current High Price : {{ price_estimates['current_high_estimate']}} <br>
-
-          <strong class="mt-2"> Confidence </strong> <br>
-          {{confidence}} %
-
-
+             <strong class="mt-5">Weekly Estimates</strong> <br>
+                Open Price : {{ estimates.open_price}} <br>
+                Low Estimate : {{ estimates.low_estimate }}<br>
+                High Estimate : {{ estimates.high_estimate }}
         </div>
       </div>
 
@@ -40,13 +29,11 @@
       </div>
     </div>
     <div>
-      <H3>Weekly Price Charts</H3>
-      <div id="price_chart"></div>
+
     </div>
 
     <div class="mt-5">
-      <H3>Daily Price Charts</H3>
-      <div id="daily_price_chart"></div>
+
     </div>
     
 
@@ -54,13 +41,13 @@
 </body>
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
-  var chart_result = {{chart_result | safe}};
-  Plotly.plot('chart_result',chart_result,{});
-
-  var price_chart = {{price_chart | safe }}
-  Plotly.plot('price_chart',price_chart,{});
-
-  var daily_price_chart = {{daily_price_chart | safe }}
-  Plotly.plot('daily_price_chart',daily_price_chart,{});
+  var trend_chart_output = {{trend_chart_output | safe}};
+  Plotly.plot('trend_chart_output',trend_chart_output,{});
+  {##}
+  {#var price_chart = {{price_chart | safe }}#}
+  {#Plotly.plot('price_chart',price_chart,{});#}
+  {##}
+  {#var daily_price_chart = {{daily_price_chart | safe }}#}
+  {#Plotly.plot('daily_price_chart',daily_price_chart,{});#}
 </script>
 </html>
