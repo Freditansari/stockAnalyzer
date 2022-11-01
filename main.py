@@ -25,6 +25,12 @@ def hello():
     else:
         return "Enter ticker"
 
+@app.route('/get_options_date', methods=['GET'])
+def get_options_date():
+    if request.method == 'GET':
+        ticker = request.args.get('ticker')
+        return json()
+
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000,debug=True)
+    app.run(host="0.0.0.0", port=5001,debug=True)
