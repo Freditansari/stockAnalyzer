@@ -28,6 +28,6 @@ from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 import plotly
 
-def get_options_date(stock_ticker):
+def get_options_date(stock_ticker, options_expire_index = 0):
     stock_data = yf.Ticker(stock_ticker)
     return stock_data.options
