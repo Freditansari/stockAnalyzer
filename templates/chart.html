@@ -40,6 +40,20 @@
 {#            </div>#}
         </div>
 
+        <div class="row">
+            <h3>Volumes</h3>
+            <p>Total volume calls : {{ options_metrics.totalVolumeCalls }}%</p>
+            <p>Total volume puts : {{ options_metrics.totalVolumePuts }}%</p>
+
+            <div id="volumes_chart"></div>
+        </div>
+      <div class="row">
+            <h3>Open Interest</h3>
+                      <p>Total open interest calls : {{ options_metrics.totalInterestCalls }}%</p>
+            <p>Total open interest puts : {{ options_metrics.totalInterestPuts }}%</p>
+            <div id="open_interest_charts"></div>
+        </div>
+
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -51,7 +65,11 @@
    var high_low_chart_output = {{high_low_chart_output | safe}};
   Plotly.plot('high_low_chart_output',high_low_chart_output,{});
 
-  console.log("banana")
+  var calls_chart_output = {{ calls_chart_output | safe }};
+  Plotly.plot("volumes_chart", calls_chart_output)
+
+   var puts_chart_output = {{ puts_chart_output | safe }};
+  Plotly.plot("open_interest_charts", puts_chart_output)
 
 </script>
 </html>
